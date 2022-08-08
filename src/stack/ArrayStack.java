@@ -48,7 +48,7 @@ public class ArrayStack<T> implements StackADT<T> {
     }
 
     @Override
-    public T peek() throws EmptyCollectionException{
+    public T peek() throws EmptyCollectionException {
         if (isEmpty()) {
             throw new EmptyCollectionException("stack");
         }
@@ -57,16 +57,26 @@ public class ArrayStack<T> implements StackADT<T> {
 
     @Override
     public boolean isEmpty() {
-        if (stack.length <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return top <= 0;
     }
 
     @Override
     public int size() {
-        return stack.length;
+        return top;
+    }
+
+    @Override
+    public String toString(){
+        if (isEmpty()) {
+            return "Stack: {}";
+        }
+
+        String text = "Stack: {";
+        for (int i = 0; i < top; i++) {
+            text = text + stack[i] +", ";
+        }
+        text = text + "}";
+        return text;
     }
 
     public void expandCapacity(){
