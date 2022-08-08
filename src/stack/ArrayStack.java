@@ -1,5 +1,5 @@
 package stack;
-import
+import stack.exceptions.EmptyCollectionException;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
