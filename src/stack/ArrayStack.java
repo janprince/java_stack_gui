@@ -36,10 +36,10 @@ public class ArrayStack<T> implements StackADT<T> {
 
 
     @Override
-    public T pop() throws EmptyStackException {
+    public T pop() throws EmptyCollectionException {
         // removes and returns the element at the top of the stack.
         if (isEmpty()){
-            throw new EmptyStackException();
+            throw new EmptyCollectionException("Stack");
         }
         top--;
         T result = stack[top];
@@ -48,19 +48,25 @@ public class ArrayStack<T> implements StackADT<T> {
     }
 
     @Override
-    public T peek() {
-
+    public T peek() throws EmptyCollectionException{
+        if (isEmpty()) {
+            throw new EmptyCollectionException("stack");
+        }
         return stack[top-1];
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        if (stack.length <= 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
     public int size() {
-        return 0;
+        return stack.length;
     }
 
     public void expandCapacity(){
